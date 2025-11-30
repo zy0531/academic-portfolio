@@ -143,10 +143,10 @@ const Portfolio = () => {
               <h2 className="text-xl font-bold text-stone-900 border-b border-stone-200 pb-2 mb-4">About Me</h2>
               <div className="space-y-4">
                 <p>
-                  <span className="font-semibold text-stone-900">Dr. Yu (Brooke) Zhao</span> is an Assistant Professor in the Department of Software Engineering & Game Development at Kennesaw State University. Her research explores the intersection of Virtual & Augmented Reality (VR/AR), Human-Computer Interaction (HCI), and Perception & Cognition.
+                  <span className="font-semibold text-stone-900">Dr. Yu (Brooke) Zhao</span> is an Assistant Professor in the Department of Software Engineering & Game Development at Kennesaw State University. Her research explores the intersection of eXtended Reality (AR, VR, MR), Human-Computer Interaction (HCI), and Cognitive Psychology. Her work investigates how people move and think through space, aiming to build extended reality (XR) technologies that enhance those abilities through cognition awareness and world understanding. Her research interests include topics across: (1) understanding XR interaction on the move, (2) building cognition-aware XR systems, and (3) leveraging generative AI, digital twins, and Gaussian splatting to create richer, more responsive XR experiences.
                 </p>
                 <p>
-                  Dr. Zhao received her Ph.D. in Computer Science from Vanderbilt University in 2025, where she was advised by <a href="https://scholar.google.com/citations?user=hI4XguUAAAAJ&hl=en" target="_blank" rel="noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline">Dr. Bobby Bodenheimer</a>. Her research has been published in top-tier venues including the <span className="italic">IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR)</span>, <span className="italic">IEEE International Symposium on Mixed and Augmented Reality (ISMAR)</span>, <span className="italic">IEEE Transactions on Visualization and Computer Graphics (TVCG)</span>, <span className="italic">ACM Symposium on Applied Perception (SAP)</span>, and <span className="italic">ACM Computing Surveys</span>. She has served on the International Program Committee for major international conferences such as IEEE VR and IEEE ISMAR.
+                  Dr. Zhao received her Ph.D. in Computer Science from Vanderbilt University in 2025 under the guidance of <a href="https://scholar.google.com/citations?user=hI4XguUAAAAJ&hl=en" target="_blank" rel="noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline">Dr. Bobby Bodenheimer</a>. Her research has been published in top-tier venues including the <span className="italic">IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR)</span>, <span className="italic">IEEE International Symposium on Mixed and Augmented Reality (ISMAR)</span>, <span className="italic">IEEE Transactions on Visualization and Computer Graphics (TVCG)</span>, <span className="italic">ACM Symposium on Applied Perception (SAP)</span>, and <span className="italic">ACM Computing Surveys</span>. She also serves on international program committees for major XR international conferences, including IEEE VR and IEEE ISMAR.
                 </p>
               </div>
             </div>
@@ -158,11 +158,11 @@ const Portfolio = () => {
       <section id="news" className="py-12 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl font-bold text-stone-900 mb-6 border-b border-stone-200 pb-2">News</h2>
-          <div className="space-y-4 text-sm md:text-base">
+          <div className="space-y-4 text-sm">
             {[
-              { date: "Oct, 2025", content: "Paper \"How Spatial Ability Affects Response to Gaze-Adaptive Cueing in Mixed Reality Spatial Navigation\" accepted to IEEE ISMAR 2025!" },
+              { date: "Oct, 2025", content: "Our paper \"How Spatial Ability Affects Response to Gaze-Adaptive Cueing in Mixed Reality Spatial Navigation\" accepted to IEEE ISMAR 2025!" },
               { date: "Sep, 2025", content: "Served as International Program Committee Member for IEEEVR 2026." },
-              { date: "Sep, 2025", content: "Paper \"A Systematic Review of the Use of Augmented Reality in Pedestrian Navigation\" accepted to ACM Computing Surveys." },
+              { date: "Sep, 2025", content: "Our paper \"A Systematic Review of the Use of Augmented Reality in Pedestrian Navigation\" accepted to ACM Computing Surveys." },
               { date: "Aug, 2025", content: "Joined Kennesaw State University as an Assistant Professor in Software Engineering & Game Development. 📍 Marietta, GA, USA" },
               { date: "Jan, 2025", content: "Served as International Program Committee Member for ISMAR 2025." },
               { date: "Oct, 2024", content: "Gave invited talk at Auburn University 📍 Auburn, AL, USA" },
@@ -220,8 +220,6 @@ const Portfolio = () => {
                 year: "2023",
                 links: [
                   { label: "PDF", url: "https://ieeexplore.ieee.org/abstract/document/10322264" },
-                  { label: "Video", url: "https://drive.google.com/file/d/1NWbLvZZl7gM2sHkbK-Big7T4Fx13pWQA/view?usp=sharing" },
-                  { label: "Code", url: "https://github.com/zy0531/ThreatDemo" }
                 ]
               },
               {
@@ -231,8 +229,7 @@ const Portfolio = () => {
                 year: "2023",
                 links: [
                   { label: "PDF", url: "https://ieeexplore.ieee.org/abstract/document/10049687" },
-                  { label: "Video", url: "https://youtu.be/7ZHdnCXOA_4?si=B_76PBNFWwsM2Is2" },
-                  { label: "Code", url: "https://github.com/zy0531/AR-Navi-VR-Simulation-in-Varjo" }
+                  { label: "Video", url: "https://youtu.be/7ZHdnCXOA_4?si=B_76PBNFWwsM2Is2" }
                 ]
               },
               {
@@ -302,7 +299,7 @@ const Portfolio = () => {
       <section id="teaching" className="py-12 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-xl font-bold text-stone-900 mb-6 border-b border-stone-200 pb-2">Teaching</h2>
-            <ul className="space-y-3 list-none">
+            <ul className="space-y-3 list-none text-sm">
                 <li className="flex flex-col sm:flex-row sm:items-baseline">
                   <span className="font-bold text-stone-900 w-32 flex-shrink-0">Fall 2025</span>
                   <span className="text-stone-700">3D Modeling and Animation @ Kennesaw State University</span>
