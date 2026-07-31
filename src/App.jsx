@@ -160,6 +160,10 @@ const Portfolio = () => {
           <h2 className="text-xl font-bold text-stone-900 mb-6 border-b border-stone-200 pb-2">News</h2>
           <div className="space-y-4 text-sm">
             {[
+              { date: "Jul, 2026", content: "Our paper \"Effects of Spatial Perspective and Frame of Reference Integration on Gaze Behavior and Spatial Learning\" was accepted to IEEE TVCG and will be presented at IEEE ISMAR 2026! 📍 Bari, Italy" },
+              { date: "Jul, 2026", content: "Two papers accepted to IEEE ISMAR-Adjunct 2026: \"A Real-time VLM Framework for Hazard Inference in Home Environment for Mixed Reality Systems\" and \"Exploring Deliberative Reasoning for Agentic AR Navigation.\" Congratulations to our KSU student authors!" },
+              { date: "May, 2026", content: "Presented our talk \"How Gaze Behavior Explains Gender Differences in Spatial Learning in Mixed Reality Navigation\" with Holly Gagnon, Jeanine Stefanucci, Sarah Creem-Regehr, and Bobby Bodenheimer at VSS 2026. 📍 St. Pete Beach, FL, USA" },
+              { date: "Mar, 2026", content: "Presented our paper \"Understanding the Interplay of Cue Design, User Characteristics, and Environment on Gaze and Navigation in Mixed Reality\" at IEEE VR 2026!" },
               { date: "Oct, 2025", content: "Our paper \"How Spatial Ability Affects Response to Gaze-Adaptive Cueing in Mixed Reality Spatial Navigation\" accepted to IEEE ISMAR 2025!" },
               { date: "Sep, 2025", content: "Served as International Program Committee Member for IEEEVR 2026." },
               { date: "Sep, 2025", content: "Our paper \"A Systematic Review of the Use of Augmented Reality in Pedestrian Navigation\" accepted to ACM Computing Surveys." },
