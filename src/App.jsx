@@ -191,7 +191,7 @@ const Portfolio = () => {
             {[
               {
                 title: "Effects of Spatial Perspective and Frame of Reference Integration on Gaze Behavior and Spatial Learning",
-                authors: "Zhao, Yu, Jeanine Stefanucci, Sarah Creem-Regehr, Bobby Bodenheimer",
+                authors: "Yu Zhao, Jeanine Stefanucci, Sarah Creem-Regehr, Bobby Bodenheimer",
                 venue: "IEEE Transactions on Visualization and Computer Graphics (TVCG), presented at IEEE ISMAR",
                 year: "2026",
                 links: [
@@ -220,7 +220,7 @@ const Portfolio = () => {
               },
               {
                 title: "Understanding the Interplay of Cue Design, User Characteristics, and Environment on Gaze and Navigation in Mixed Reality",
-                authors: "Zhao, Yu, Jeanine Stefanucci, Sarah Creem-Regehr, Bobby Bodenheimer",
+                authors: "Yu Zhao, Jeanine Stefanucci, Sarah Creem-Regehr, Bobby Bodenheimer",
                 venue: "2026 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)",
                 year: "2026",
                 links: [
@@ -230,7 +230,7 @@ const Portfolio = () => {
               },
               {
                 title: "How Spatial Ability Affects Response to Gaze-Adaptive Cueing in Mixed Reality Spatial Navigation",
-                authors: "Zhao, Yu, Bobby Bodenheimer",
+                authors: "Yu Zhao, Bobby Bodenheimer",
                 venue: "2025 IEEE International Symposium on Mixed and Augmented Reality (ISMAR)",
                 year: "2025",
                 links: [
@@ -240,7 +240,7 @@ const Portfolio = () => {
               },
               {
                 title: "A Systematic Review of the Use of Augmented Reality in Pedestrian Navigation",
-                authors: "Zhao, Yu, Gagnon Holly, Jeanine Stefanucci, Sarah H Creem-Regehr, Bobby Bodenheimer",
+                authors: "Yu Zhao, Holly Gagnon, Jeanine Stefanucci, Sarah H Creem-Regehr, Bobby Bodenheimer",
                 venue: "ACM Computing Surveys",
                 year: "2025",
                 links: [
@@ -267,7 +267,7 @@ const Portfolio = () => {
               },
               {
                 title: "Evaluating Augmented Reality Landmark Cues and Frame of Reference Displays with Virtual Reality",
-                authors: "Zhao, Yu, Jeanine Stefanucci, Sarah Creem-Regehr, Bobby Bodenheimer",
+                authors: "Yu Zhao, Jeanine Stefanucci, Sarah Creem-Regehr, Bobby Bodenheimer",
                 venue: "IEEE Transactions on Visualization and Computer Graphics (TVCG)",
                 year: "2023",
                 links: [
@@ -277,7 +277,7 @@ const Portfolio = () => {
               },
               {
                 title: "The perception of affordances in mobile augmented reality",
-                authors: "Zhao, Yu, Jeanine Stefanucci, Sarah H Creem-Regehr, Bobby Bodenheimer",
+                authors: "Yu Zhao, Jeanine Stefanucci, Sarah H Creem-Regehr, Bobby Bodenheimer",
                 venue: "ACM Symposium on Applied Perception (SAP)",
                 year: "2021",
                 links: [
@@ -309,7 +309,7 @@ const Portfolio = () => {
                   {pub.title}
                 </div>
                 <div className="text-stone-700 text-sm mt-1">
-                  {pub.authors.replace("Zhao, Yu", "Zhao, Yu (Brooke)")} 
+                  {pub.authors}
                 </div>
                 <div className="text-stone-600 text-sm italic mt-0.5">
                   {pub.venue}, {pub.year}
