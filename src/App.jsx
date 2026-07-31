@@ -197,6 +197,34 @@ const Portfolio = () => {
                 ]
               },
               {
+                title: "A Real-time VLM Framework for Hazard Inference in Home Environment for Mixed Reality Systems",
+                authors: "Jalal Uddin, Melissa C. Osborne, Allison Garefino, Lei Zhang, Yu Zhao",
+                venue: "2026 IEEE ISMAR-Adjunct",
+                year: "2026",
+                links: [
+                  { label: "PDF", url: "https://zy0531.github.io/academic-portfolio/papers/Uddin_2026_ISMAR_Adjunct_VLM_Hazard_Inference.pdf" }
+                ]
+              },
+              {
+                title: "Exploring Deliberative Reasoning for Agentic AR Navigation",
+                authors: "Robert Hoeh, Jalal Uddin, Gabriel Coffee, Jemimah Ogbomoh, Peeranat Wattananuruk, Yu Zhao",
+                venue: "2026 IEEE ISMAR-Adjunct",
+                year: "2026",
+                links: [
+                  { label: "PDF", url: "https://zy0531.github.io/academic-portfolio/papers/Hoeh_2026_ISMAR_Adjunct_Agentic_AR_Navigation.pdf" }
+                ]
+              },
+              {
+                title: "Understanding the Interplay of Cue Design, User Characteristics, and Environment on Gaze and Navigation in Mixed Reality",
+                authors: "Zhao, Yu, Jeanine Stefanucci, Sarah Creem-Regehr, Bobby Bodenheimer",
+                venue: "2026 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)",
+                year: "2026",
+                links: [
+                  { label: "PDF", url: "https://zy0531.github.io/academic-portfolio/papers/Zhao_2026_VR_Cue_Design_Gaze_Navigation.pdf" },
+                  { label: "DOI", url: "https://doi.org/10.1109/VR67842.2026.00054" }
+                ]
+              },
+              {
                 title: "How Spatial Ability Affects Response to Gaze-Adaptive Cueing in Mixed Reality Spatial Navigation",
                 authors: "Zhao, Yu, Bobby Bodenheimer",
                 venue: "2025 IEEE International Symposium on Mixed and Augmented Reality (ISMAR)",
