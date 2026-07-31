@@ -146,7 +146,7 @@ const Portfolio = () => {
                   <span className="font-semibold text-stone-900">Dr. Yu (Brooke) Zhao</span> is an Assistant Professor in the Department of Software Engineering & Game Development at Kennesaw State University. Her research explores the intersection of eXtended Reality (AR, VR, MR), Human-Computer Interaction (HCI), and Cognitive Psychology. Her work investigates how people move and think through space, aiming to build extended reality (XR) technologies that enhance those abilities through cognition awareness and world understanding. Her research interests include topics across: (1) understanding XR interaction on the move, (2) building cognition-aware XR systems, and (3) leveraging generative AI, digital twins, and Gaussian splatting to create richer, more responsive XR experiences.
                 </p>
                 <p>
-                  Dr. Zhao received her Ph.D. in Computer Science from Vanderbilt University in 2025 under the guidance of <a href="https://scholar.google.com/citations?user=hI4XguUAAAAJ&hl=en" target="_blank" rel="noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline">Dr. Bobby Bodenheimer</a>. Her research has been published in top-tier venues including the <span className="italic">IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR)</span>, <span className="italic">IEEE International Symposium on Mixed and Augmented Reality (ISMAR)</span>, <span className="italic">IEEE Transactions on Visualization and Computer Graphics (TVCG)</span>, <span className="italic">ACM Symposium on Applied Perception (SAP)</span>, and <span className="italic">ACM Computing Surveys</span>. She also serves on international program committees for major XR international conferences, including IEEE VR and IEEE ISMAR.
+                  Dr. Zhao received her Ph.D. in Computer Science from Vanderbilt University in 2025 supervised by <a href="https://scholar.google.com/citations?user=hI4XguUAAAAJ&hl=en" target="_blank" rel="noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline">Dr. Bobby Bodenheimer</a>. Her research has been published in top-tier venues including the <span className="italic">IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR)</span>, <span className="italic">IEEE International Symposium on Mixed and Augmented Reality (ISMAR)</span>, <span className="italic">IEEE Transactions on Visualization and Computer Graphics (TVCG)</span>, <span className="italic">ACM Symposium on Applied Perception (SAP)</span>, and <span className="italic">ACM Computing Surveys</span>. She also serves on international program committees for major XR international conferences, including IEEE VR and IEEE ISMAR.
                 </p>
               </div>
             </div>
@@ -185,6 +185,17 @@ const Portfolio = () => {
           
           <div className="space-y-6">
             {[
+              {
+                title: "Effects of Spatial Perspective and Frame of Reference Integration on Gaze Behavior and Spatial Learning",
+                authors: "Zhao, Yu, Jeanine Stefanucci, Sarah Creem-Regehr, Bobby Bodenheimer",
+                venue: "IEEE Transactions on Visualization and Computer Graphics (TVCG), presented at IEEE ISMAR",
+                year: "2026",
+                links: [
+                  { label: "Website", url: "https://zy0531.github.io/academic-portfolio/projects/ismar2026-cues/" },
+                  { label: "PDF", url: "https://zy0531.github.io/academic-portfolio/projects/ismar2026-cues/static/paper.pdf" },
+                  { label: "Data", url: "https://osf.io/mzcqs/" }
+                ]
+              },
               {
                 title: "How Spatial Ability Affects Response to Gaze-Adaptive Cueing in Mixed Reality Spatial Navigation",
                 authors: "Zhao, Yu, Bobby Bodenheimer",
