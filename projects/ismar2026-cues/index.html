@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effects of Spatial Perspective and Frame of Reference Integration on Gaze Behavior and Spatial Learning</title>
+<meta name="description" content="A study of world-fixed cues, body-fixed world-in-miniature maps, and their combination for navigation, spatial learning, gaze behavior, and cognitive load in immersive 3D interfaces. IEEE TVCG / ISMAR 2026.">
+<meta property="og:title" content="Spatial Perspective and Frame of Reference Integration in 3D Interfaces">
+<meta property="og:description" content="Combining world-fixed cues with a body-fixed WIM map enhances spatial learning without added cognitive load. IEEE TVCG / ISMAR 2026.">
+<meta property="og:image" content="static/images/teaser.png">
+<style>
+  :root {
+    --text: #1a1a1a;
+    --muted: #555;
+    --light: #767676;
+    --accent: #2a5db0;
+    --world: #2e9e44;
+    --map: #e05c66;
+    --worldmap: #4f8de0;
+    --border: #e5e5e5;
+    --bg-soft: #f7f8fa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 17px;
+    background: #fff;
+  }
+  .container { max-width: 940px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  .narrow { max-width: 780px; margin-left: auto; margin-right: auto; }
+
+  header { padding-top: 64px; padding-bottom: 8px; text-align: center; }
+  h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    max-width: 880px;
+    margin: 0 auto 14px;
+  }
+  .venue { font-size: 18px; color: var(--accent); font-weight: 600; margin-bottom: 22px; }
+  .authors { font-size: 18px; margin-bottom: 6px; }
+  .authors a { color: var(--accent); text-decoration: none; }
+  .authors a:hover { text-decoration: underline; }
+  .authors sup { font-size: 12px; color: var(--muted); }
+  .affil { font-size: 15px; color: var(--muted); margin-bottom: 26px; }
+  .affil sup { font-size: 11px; }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 40px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #222; color: #fff;
+    border-radius: 999px; padding: 9px 20px;
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    transition: background .15s ease;
+  }
+  .btn:hover { background: #444; }
+  .btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+  figure { margin: 0 0 12px; }
+  figure img, video { width: 100%; height: auto; display: block; border-radius: 8px; }
+  figcaption, .caption {
+    font-size: 14px; color: var(--light); line-height: 1.55;
+    margin-top: 10px; text-align: left;
+  }
+  .caption b { color: var(--muted); }
+
+  section { padding-top: 48px; padding-bottom: 72px; }
+  section + section { border-top: 1px solid var(--border); }
+  h2 { font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 36px; letter-spacing: -0.01em; }
+  h3 { font-size: 19px; font-weight: 650; margin: 26px 0 10px; }
+  p { margin-bottom: 14px; }
+  .abstract p { text-align: justify; hyphens: auto; }
+
+  .cond { font-weight: 650; }
+  .cond.world { color: var(--world); }
+  .cond.map { color: var(--map); }
+  .cond.worldmap { color: var(--worldmap); }
+
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  @media (max-width: 720px) { .video-grid { grid-template-columns: 1fr; } }
+  .video-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-soft); }
+  .video-card .tag {
+    display: block; padding: 8px 12px; font-size: 14px; font-weight: 650; color: #fff;
+  }
+  .tag.world { background: var(--world); }
+  .tag.map { background: var(--map); }
+  .tag.worldmap { background: var(--worldmap); }
+  .video-card video { border-radius: 0; aspect-ratio: 16 / 9; object-fit: cover; }
+  .video-card .desc { padding: 10px 12px; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+  .findings { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  @media (max-width: 720px) { .findings { grid-template-columns: 1fr; } }
+  .finding {
+    background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px;
+  }
+  .finding .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: #222; color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 10px;
+  }
+  .finding h4 { font-size: 16px; font-weight: 650; margin-bottom: 6px; }
+  .finding p { font-size: 14.5px; color: var(--muted); margin: 0; }
+
+  .implication { display: flex; gap: 14px; margin-bottom: 14px; }
+  .implication .dot { flex: 0 0 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 10px; }
+  .implication p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .implication b { color: var(--text); }
+
+  .two-col { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items: center; }
+  @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+  pre.bibtex {
+    background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; font-size: 13.5px; line-height: 1.55; overflow-x: auto;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    position: relative;
+  }
+  .bib-wrap { position: relative; }
+  .copy-btn {
+    position: absolute; top: 10px; right: 10px;
+    background: #fff; border: 1px solid var(--border); border-radius: 6px;
+    padding: 5px 12px; font-size: 13px; cursor: pointer; color: var(--muted);
+  }
+  .copy-btn:hover { background: #f0f0f0; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0 40px; text-align: center;
+    font-size: 13.5px; color: var(--light);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="container">
+  <h1>Effects of Spatial Perspective and Frame of Reference Integration on Gaze Behavior and Spatial Learning</h1>
+  <div class="venue">IEEE Transactions on Visualization and Computer Graphics &middot; <a href="https://www.ieeeismar.net/2026/" target="_blank" rel="noopener" style="color:inherit;">IEEE ISMAR 2026</a></div>
+  <div class="authors">
+    Yu Zhao<sup>1</sup>,
+    Jeanine Stefanucci<sup>2</sup>,
+    Sarah Creem-Regehr<sup>2</sup>,
+    Bobby Bodenheimer<sup>3</sup>
+  </div>
+  <div class="affil">
+    <sup>1</sup>Kennesaw State University &nbsp;&nbsp; <sup>2</sup>University of Utah &nbsp;&nbsp; <sup>3</sup>Vanderbilt University
+  </div>
+  <div class="btn-row">
+    <a class="btn" href="static/paper.pdf" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
+      Paper
+    </a>
+    <a class="btn" href="https://osf.io/mzcqs/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 4a5 5 0 1 1-5 5 5 5 0 0 1 5-5zm0 2.5A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5z"/></svg>
+      Data
+    </a>
+    <a class="btn" href="#bibtex">
+      <svg viewBox="0 0 24 24"><path d="M9.6 4 5 12l4.6 8h2.3l-4.6-8 4.6-8H9.6zm4.8 0 4.6 8-4.6 8h2.3l4.6-8-4.6-8h-2.3z"/></svg>
+      BibTeX
+    </a>
+  </div>
+</header>
+
+<div class="container">
+  <figure>
+    <img src="static/images/teaser.png" alt="The three cue designs studied: a world-fixed cue, a body-fixed world-in-miniature map, and their combination.">
+    <figcaption>
+      Three spatial visual cue designs evaluated in the study. <b>(a)</b> A world-fixed cue anchored to the physical landmark. <b>(b)</b> A body-fixed world-in-miniature map. <b>(c)</b> A combined world-fixed cue and body-fixed map. Combined cueing creates a situated spatial link that strengthens the user&rsquo;s spatial information processing and mental representation of space during navigation.
+    </figcaption>
+  </figure>
+</div>
+
+<section class="container narrow abstract">
+  <h2>Abstract</h2>
+  <p>
+    As spatial computing offers expanded design spaces and brings digital information seamlessly into a physical environment, it redefines how we perceive space and navigate our surroundings. This study investigates enhancing human navigation and spatial knowledge acquisition in large space environments, focusing on the integration of spatial visual cue display in 3D design space. Three cues were designed (world-fixed cue, body-fixed world-in-miniature map, and a combination of both) and their impact on spatial learning, eye movements, cognitive load, and user experience was assessed. The findings reveal that displaying cues across frames of reference (combining the world- and body-fixed cues) significantly enhances spatial information processing and learning without the cost of cognitive load. The study also sheds light on how individuals&rsquo; eye movement patterns differ with interface design and while learning, which advances our understanding of the relationship between gaze behavior and spatial learning outcomes and informs cognition-aware adaptive 3D interface design. The anonymized data generated in this study are openly available on the <a href="https://osf.io/mzcqs/">Open Science Framework</a>.
+  </p>
+</section>
+
+<section class="container">
+  <h2>Three Cue Designs Across Frames of Reference</h2>
+  <p class="narrow" style="text-align:center; color:var(--muted);">
+    Participants navigated a predefined route in a virtual urban environment with one of three cue designs.
+    <span class="cond world">World</span> anchors highlights to landmarks in the environment.
+    <span class="cond map">Map</span> presents a body-fixed, forward-up world-in-miniature map with 3D landmark replicas.
+    <span class="cond worldmap">WorldMap</span> combines both, linking map replicas to their real counterparts through synchronized circular highlights.
+  </p>
+  <figure>
+    <img src="static/images/cue_conditions.jpg" alt="First-person views of the three cue conditions in the virtual environment.">
+    <figcaption>
+      First-person views during navigation. <b>(a)</b> <span class="cond world">World</span>: a world-fixed circular highlight marks the target landmark. <b>(b)</b> <span class="cond map">Map</span>: a body-fixed WIM map displays high-fidelity replicas of target landmarks. <b>(c)</b> <span class="cond worldmap">WorldMap</span>: circular highlights on both the map replica and the physical landmark create a situated spatial link.
+    </figcaption>
+  </figure>
+  <!-- Condition video clips, hidden for now. Remove this comment wrapper to show them again.
+  <div class="video-grid">
+    <div class="video-card">
+      <span class="tag world">World &middot; World-fixed cue</span>
+      <video autoplay muted loop playsinline preload="metadata" controls src="static/videos/world.mp4"></video>
+      <div class="desc">A 6-DOF anchored circle highlights the target landmark when the user is within 50 m, supporting rapid orienting through peripheral vision.</div>
+    </div>
+    <div class="video-card">
+      <span class="tag map">Map &middot; Body-fixed WIM map</span>
+      <video autoplay muted loop playsinline preload="metadata" controls src="static/videos/map.mp4"></video>
+      <div class="desc">A forward-up dynamic map, positioned 1.5 m ahead and below the horizon, shows 3D replicas of up to five landmarks within a 150 m area.</div>
+    </div>
+    <div class="video-card">
+      <span class="tag worldmap">WorldMap &middot; Combined cue</span>
+      <video autoplay muted loop playsinline preload="metadata" controls src="static/videos/worldmap.mp4"></video>
+      <div class="desc">Dual circular highlights on the map replica and the corresponding landmark implicitly link information across the two frames of reference.</div>
+    </div>
+  </div>
+  -->
+</section>
+
+<section class="container">
+  <h2>Experiment</h2>
+  <p class="narrow" style="text-align:center; color:var(--muted);">
+    90 participants navigated a 1 km route twice in an immersive virtual city wearing a Varjo XR-3 headset with 200 Hz eye tracking. Spatial learning was measured with an egocentric pointing task and an allocentric map drawing task. Cognitive load was measured continuously with an auditory detection response task.
+  </p>
+  <figure>
+    <img src="static/images/procedure.jpg" alt="Route map, apparatus, procedure diagram, and participant views of the exploration, pointing, and map drawing tasks.">
+    <figcaption>
+      <b>(a)</b> Top-down view of the route with seven target landmarks; orange outlines mark globally visible landmarks. <b>(b)</b> Apparatus, with locomotion controlled by body-based steering and a waist tracker. <b>(c)</b> Procedure with two trials, each comprising exploration with a concurrent auditory detection response task, pointing, and map drawing. <b>(d&ndash;f)</b> Participant views of the exploration, pointing, and map drawing tasks.
+    </figcaption>
+  </figure>
+  <div class="two-col" style="margin-top: 20px;">
+    <video autoplay muted loop playsinline preload="metadata" controls src="static/videos/pointing.mp4"></video>
+    <div>
+      <h3 style="margin-top:0;">Pointing task</h3>
+      <p style="color:var(--muted); font-size:15.5px;">
+        After each exploration, participants were teleported into the environment and pointed toward remembered landmarks with a controller ray, yielding 42 pointing directions per participant. Pointing error, the angular difference between the estimated and ground-truth directions, quantified egocentric spatial memory of landmark relationships.
+      </p>
+    </div>
+  </div>
+  <div class="two-col" style="margin-top: 24px;">
+    <video autoplay muted loop playsinline preload="metadata" controls src="static/videos/mapdrawing.mp4"></video>
+    <div>
+      <h3 style="margin-top:0;">Map drawing task</h3>
+      <p style="color:var(--muted); font-size:15.5px;">
+        Participants then reconstructed the layout on a blank board. Given a start position marker and images of the seven landmarks, they placed each replica where they believed it was located and sketched the route they had traversed. Bidimensional regression between estimated and actual configurations quantified survey knowledge.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Key Findings</h2>
+  <div class="findings">
+    <div class="finding">
+      <span class="num">1</span>
+      <h4>Combined cueing produced the strongest spatial learning</h4>
+      <p>Performance followed the predicted order across both tasks (<span class="cond world">World</span> &lt; <span class="cond map">Map</span> &lt; <span class="cond worldmap">WorldMap</span>). Relative to the <span class="cond world">World</span> condition, pointing error was 21.8% lower and map drawing accuracy 22.9% higher in the <span class="cond worldmap">WorldMap</span> condition.</p>
+    </div>
+    <div class="finding">
+      <span class="num">2</span>
+      <h4>The added map carried no measurable cognitive cost</h4>
+      <p>Detection response task performance showed no significant differences across conditions, and pupil diameter behaved similarly. The body-fixed map functioned as supportive spatial context instead of competing visual input.</p>
+    </div>
+    <div class="finding">
+      <span class="num">3</span>
+      <h4>Cue design reshaped visual learning strategies</h4>
+      <p>Map conditions increased vertical gaze dispersion and saccadic amplitude while reducing horizontal scanning. Participants in the <span class="cond world">World</span> condition relied on global landmarks, and attention to them predicted learning. Map users shifted to the survey view, which supplanted that role.</p>
+    </div>
+    <div class="finding">
+      <span class="num">4</span>
+      <h4>Gaze behavior evolved with familiarity</h4>
+      <p>Across trials, participants improved on both spatial tasks, explored more broadly with larger gaze hit distances, showed shorter fixation durations with higher fixation frequency, and exhibited reduced pupil diameter ratio, indicating more efficient processing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container narrow">
+  <h2>Design Implications</h2>
+  <div class="implication"><span class="dot"></span><p><b>Integrate perspectives across frames of reference.</b> Dual cueing that links map elements to corresponding world-fixed landmarks establishes explicit spatial correspondences and supports spatial learning without increasing cognitive load.</p></div>
+  <div class="implication"><span class="dot"></span><p><b>Trigger world-fixed highlights at intermediate distances.</b> Around 50 m, landmarks are perceptible yet visually subtle, which facilitates timely spatial association while minimizing visual competition.</p></div>
+  <div class="implication"><span class="dot"></span><p><b>Place body-fixed maps below the natural horizon.</b> A comfortable viewing distance, about 1.5 m from the user, supports quick visual access without obstructing the primary field of view.</p></div>
+  <div class="implication"><span class="dot"></span><p><b>Limit simultaneous landmark replicas.</b> Showing at most five replicas on the map reduces visual clutter and prevents information overload.</p></div>
+  <div class="implication"><span class="dot"></span><p><b>Adapt cueing to learning and familiarity.</b> Gaze behavior shifts as users learn a space. Cue density or map detail could be simplified once users demonstrate spatial understanding, preserving attentional resources for other tasks.</p></div>
+</section>
+
+<section class="container narrow" id="bibtex">
+  <h2>BibTeX</h2>
+  <div class="bib-wrap">
+    <button class="copy-btn" onclick="copyBib(this)">Copy</button>
+<pre class="bibtex" id="bibtex-text">@article{zhao2026effects,
+  author  = {Zhao, Yu and Stefanucci, Jeanine and Creem-Regehr, Sarah and Bodenheimer, Bobby},
+  title   = {Effects of Spatial Perspective and Frame of Reference Integration on Gaze Behavior and Spatial Learning},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  year    = {2026},
+  doi     = {},
+  note    = {Presented at IEEE ISMAR 2026}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    This material is based upon work supported by the Office of Naval Research under grant N0014-21-2-2583.<br>
+    Website template inspired by <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>. &copy; 2026 Yu Zhao.
+  </div>
+</footer>
+
+<script>
+function copyBib(btn) {
+  navigator.clipboard.writeText(document.getElementById('bibtex-text').textContent).then(function () {
+    btn.textContent = 'Copied!';
+    setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+  });
+}
+</script>
+
+</body>
+</html>
